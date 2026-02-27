@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">HR система</string>
+    <string name="main_screen_title">Главный экран</string>
+    <string name="settings_title">Настройки</string>
+    <string name="switch_theme">Тёмная тема</string>
+    <string name="language_en">Английский</string>
+    <string name="language_ru">Русский</string>
+    <string name="add_vacancy">Добавить вакансию</string>
+    <string name="vacancy_details">Детали вакансии</string>
+    <string name="title_hint">Должность</string>
+    <string name="desc_hint">Описание</string>
+    <string name="date_hint">Дата</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="empty_list">Список пуст</string>
+</resources>

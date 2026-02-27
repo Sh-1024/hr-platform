@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">HR Platform</string>
+    <string name="main_screen_title">Vacancies</string>
+    <string name="settings_title">Settings</string>
+    <string name="switch_theme">Dark Theme</string>
+    <string name="language_en">English</string>
+    <string name="language_ru">Russian</string>
+    <string name="add_vacancy">Add Vacancy</string>
+    <string name="vacancy_details">Vacancy Details</string>
+    <string name="title_hint">Job Title</string>
+    <string name="desc_hint">Description</string>
+    <string name="date_hint">Date</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="empty_list">No vacancies yet</string>
+</resources>
