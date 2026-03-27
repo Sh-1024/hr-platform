@@ -41,9 +41,7 @@ fun SettingsScreen(viewModel: SettingsViewModel, onNavigateBack: () -> Unit) {
                 )
             }
 
-            Divider()
-
-            Text("Language / Язык", style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(id = R.string.language_hint), style = MaterialTheme.typography.titleMedium)
 
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 Button(onClick = { setLanguage("en") }) {
@@ -57,7 +55,7 @@ fun SettingsScreen(viewModel: SettingsViewModel, onNavigateBack: () -> Unit) {
             Spacer(modifier = Modifier.weight(1f))
 
             Button(onClick = onNavigateBack, modifier = Modifier.fillMaxWidth()) {
-                Text("Back")
+                Text(stringResource(id = R.string.back_button))
             }
         }
     }

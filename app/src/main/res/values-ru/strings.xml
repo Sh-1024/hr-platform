@@ -13,4 +13,6 @@
     <string name="save">Сохранить</string>
     <string name="delete">Удалить</string>
     <string name="empty_list">Список пуст</string>
+    <string name="language_hint">Язык</string>
+    <string name="back_button">Назад</string>
 </resources>

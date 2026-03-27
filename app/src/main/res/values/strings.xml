@@ -13,4 +13,6 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="empty_list">No vacancies yet</string>
+    <string name="language_hint">Language</string>
+    <string name="back_button">Back</string>
 </resources>

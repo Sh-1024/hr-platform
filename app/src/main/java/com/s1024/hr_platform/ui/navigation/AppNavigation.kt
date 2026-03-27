@@ -1,5 +1,7 @@
 package com.s1024.hr_platform.ui.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -9,6 +11,7 @@ import androidx.navigation.navArgument
 import com.s1024.hr_platform.ui.screen.DetailScreen
 import com.s1024.hr_platform.ui.screen.MainScreen
 import com.s1024.hr_platform.ui.screen.SettingsScreen
+import com.s1024.hr_platform.viewmodel.HoroscopeViewModel
 import com.s1024.hr_platform.viewmodel.SettingsViewModel
 import com.s1024.hr_platform.viewmodel.VacancyViewModel
 
@@ -20,11 +23,13 @@ sealed class Screen(val route: String) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppNavigation(
     navController: NavHostController,
     settingsViewModel: SettingsViewModel,
-    vacancyViewModel: VacancyViewModel
+    vacancyViewModel: VacancyViewModel,
+    horoscopeViewModel: HoroscopeViewModel
 ) {
     NavHost(navController = navController, startDestination = Screen.Main.route) {
 
@@ -32,7 +37,8 @@ fun AppNavigation(
             MainScreen(
                 viewModel = vacancyViewModel,
                 onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
-                onNavigateToDetails = { id -> navController.navigate(Screen.Details.createRoute(id)) }
+                onNavigateToDetails = { id -> navController.navigate(Screen.Details.createRoute(id)) },
+                horoscopeViewModel = horoscopeViewModel
             )
         }
 
