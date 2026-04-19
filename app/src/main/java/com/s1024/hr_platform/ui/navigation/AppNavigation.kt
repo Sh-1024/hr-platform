@@ -1,5 +1,6 @@
 package com.s1024.hr_platform.ui.navigation
 
+import VacancyViewModel
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
@@ -13,7 +14,6 @@ import com.s1024.hr_platform.ui.screen.MainScreen
 import com.s1024.hr_platform.ui.screen.SettingsScreen
 import com.s1024.hr_platform.viewmodel.HoroscopeViewModel
 import com.s1024.hr_platform.viewmodel.SettingsViewModel
-import com.s1024.hr_platform.viewmodel.VacancyViewModel
 
 sealed class Screen(val route: String) {
     object Main : Screen("main")

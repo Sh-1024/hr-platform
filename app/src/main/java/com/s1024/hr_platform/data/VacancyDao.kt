@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface VacancyDao {
-    @Query("SELECT * FROM vacancies ORDER BY id DESC")
+    @Query("SELECT * FROM vacancies")
     fun getAllVacancies(): Flow<List<Vacancy>>
 
     @Query("SELECT * FROM vacancies WHERE id = :id")
@@ -18,6 +18,12 @@ interface VacancyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertVacancy(vacancy: Vacancy)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(vacancies: List<Vacancy>)
+
     @Delete
     suspend fun deleteVacancy(vacancy: Vacancy)
+
+    @Query("DELETE FROM vacancies")
+    suspend fun deleteAll()
 }

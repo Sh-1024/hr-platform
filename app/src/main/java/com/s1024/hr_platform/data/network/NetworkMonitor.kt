@@ -15,8 +15,12 @@ class NetworkMonitor(context: Context) {
 
     val isConnected: Flow<Boolean> = callbackFlow {
         val callback = object : ConnectivityManager.NetworkCallback() {
-            override fun onAvailable(network: Network) { trySend(true) }
-            override fun onLost(network: Network) { trySend(false) }
+            override fun onAvailable(network: Network) {
+                trySend(true)
+            }
+            override fun onLost(network: Network) {
+                trySend(false)
+            }
         }
 
         val request = NetworkRequest.Builder()
@@ -29,6 +33,8 @@ class NetworkMonitor(context: Context) {
         val isOnline = caps?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
         trySend(isOnline)
 
-        awaitClose { connectivityManager.unregisterNetworkCallback(callback) }
+        awaitClose {
+            connectivityManager.unregisterNetworkCallback(callback)
+        }
     }
 }

@@ -4,12 +4,12 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.s1024.hr_platform.data.entity.HoroscopeEntity
 import com.s1024.hr_platform.data.network.NetworkMonitor
 import com.s1024.hr_platform.data.repository.HoroscopeRepository
+import com.s1024.hr_platform.ui.state.HoroscopeUiState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -19,17 +19,25 @@ class HoroscopeViewModel(
     networkMonitor: NetworkMonitor
 ) : ViewModel() {
 
-    private val API_KEY = "some trash instead of api key because I did not add .env file"
+    private val API_KEY = "apv_aaaad79f-f0c3-4d84-b11a-66c5bc890601"
 
     @RequiresApi(Build.VERSION_CODES.O)
     val currentSign = getZodiacSign(LocalDate.now())
 
     val isOnline: StateFlow<Boolean> = networkMonitor.isConnected
-        .stateIn(viewModelScope, SharingStarted.Lazily, true)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), true)
 
     @RequiresApi(Build.VERSION_CODES.O)
-    val dailyHoroscope: StateFlow<HoroscopeEntity?> = repository.getCachedHoroscope(currentSign)
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
+    val uiState: StateFlow<HoroscopeUiState> = combine(
+        repository.getCachedHoroscope(currentSign),
+        isOnline
+    ) { horoscope, isOnline ->
+        HoroscopeUiState(
+            isOnline = isOnline,
+            sign = horoscope?.sign,
+            text = horoscope?.text
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HoroscopeUiState())
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchLatestHoroscope() {

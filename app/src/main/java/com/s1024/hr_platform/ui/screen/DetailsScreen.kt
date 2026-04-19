@@ -1,13 +1,16 @@
 package com.s1024.hr_platform.ui.screen
+
+import VacancyViewModel
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.s1024.hr_platform.R
-import com.s1024.hr_platform.data.Vacancy
-import com.s1024.hr_platform.viewmodel.VacancyViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -16,25 +19,27 @@ fun DetailScreen(
     viewModel: VacancyViewModel,
     onNavigateBack: () -> Unit
 ) {
-    var title by remember { mutableStateOf("") }
-    var description by remember { mutableStateOf("") }
-    var date by remember { mutableStateOf("") }
-    var currentVacancy by remember { mutableStateOf<Vacancy?>(null) }
+    val uiState by viewModel.detailsUiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(vacancyId) {
-        if (vacancyId != 0) {
-            viewModel.getVacancy(vacancyId)?.let { v ->
-                currentVacancy = v
-                title = v.title
-                description = v.description
-                date = v.date
-            }
-        }
+        viewModel.loadVacancy(vacancyId)
     }
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(id = R.string.vacancy_details)) })
+            TopAppBar(
+                title = {
+                    Text(
+                        stringResource(
+                            id = if (uiState.isExistingVacancy) {
+                                R.string.edit_vacancy_title
+                            } else {
+                                R.string.create_vacancy_title
+                            }
+                        )
+                    )
+                }
+            )
         }
     ) { paddingValues ->
         Column(
@@ -45,40 +50,41 @@ fun DetailScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             OutlinedTextField(
-                value = title,
-                onValueChange = { title = it },
+                value = uiState.title,
+                onValueChange = viewModel::updateTitle,
                 label = { Text(stringResource(id = R.string.title_hint)) },
                 modifier = Modifier.fillMaxWidth()
             )
 
             OutlinedTextField(
-                value = description,
-                onValueChange = { description = it },
+                value = uiState.author,
+                onValueChange = viewModel::updateAuthor,
+                label = { Text("Автор вакансии") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            OutlinedTextField(
+                value = uiState.description,
+                onValueChange = viewModel::updateDescription,
                 label = { Text(stringResource(id = R.string.desc_hint)) },
                 modifier = Modifier.fillMaxWidth().height(120.dp)
             )
 
-            OutlinedTextField(
-                value = date,
-                onValueChange = { date = it },
-                label = { Text(stringResource(id = R.string.date_hint)) },
-                modifier = Modifier.fillMaxWidth()
-            )
-
             Button(
                 onClick = {
-                    viewModel.saveVacancy(vacancyId, title, description, date)
+                    viewModel.saveCurrentVacancy()
                     onNavigateBack()
                 },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                enabled = uiState.isSaveEnabled
             ) {
                 Text(stringResource(id = R.string.save))
             }
 
-            if (vacancyId != 0) {
+            if (uiState.isExistingVacancy) {
                 OutlinedButton(
                     onClick = {
-                        currentVacancy?.let { viewModel.deleteVacancy(it) }
+                        viewModel.deleteCurrentVacancy()
                         onNavigateBack()
                     },
                     modifier = Modifier.fillMaxWidth(),

@@ -30,12 +30,12 @@ class HoroscopeRepository(
                     text = data.horoscope
                 )
                 dao.insertHoroscope(entity)
-                Log.d("HoroscopeRepo", "Гороскоп успешно сохранен в БД")
+                Log.d("HoroscopeRepo", "Horoscope saved to db")
             } else {
-                Log.e("HoroscopeRepo", "Ошибка API: статус не ok")
+                Log.e("HoroscopeRepo", "API Error")
             }
         } catch (e: Exception) {
-            Log.e("HoroscopeRepo", "Ошибка сети или БД: ${e.message}")
+            Log.e("HoroscopeRepo", "Network or db error: ${e.message}")
         }
     }
 }

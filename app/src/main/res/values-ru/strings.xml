@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">HR система</string>
-    <string name="main_screen_title">Главный экран</string>
+    <string name="main_screen_title">Вакансии</string>
     <string name="settings_title">Настройки</string>
     <string name="switch_theme">Тёмная тема</string>
     <string name="language_en">Английский</string>
     <string name="language_ru">Русский</string>
     <string name="add_vacancy">Добавить вакансию</string>
     <string name="vacancy_details">Детали вакансии</string>
+    <string name="create_vacancy_title">Новая вакансия</string>
+    <string name="edit_vacancy_title">Редактирование вакансии</string>
     <string name="title_hint">Должность</string>
     <string name="desc_hint">Описание</string>
     <string name="date_hint">Дата</string>
@@ -15,4 +17,27 @@
     <string name="empty_list">Список пуст</string>
     <string name="language_hint">Язык</string>
     <string name="back_button">Назад</string>
+    <string name="theme_section_title">Тема</string>
+    <string name="theme_system">Как в системе</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="cd_open_settings">Открыть настройки</string>
+    <string name="cd_add_vacancy">Добавить вакансию</string>
+    <string name="network_unavailable">Нет подключения к сети.</string>
+    <string name="horoscope_title">HR-гороскоп на сегодня</string>
+    <string name="horoscope_sign_format">Знак: %1$s\n%2$s</string>
+    <string name="horoscope_unavailable">Гороскоп недоступен.\nПроверьте подключение или API-ключ.</string>
+    <string name="zodiac_aries">Овен</string>
+    <string name="zodiac_taurus">Телец</string>
+    <string name="zodiac_gemini">Близнецы</string>
+    <string name="zodiac_cancer">Рак</string>
+    <string name="zodiac_leo">Лев</string>
+    <string name="zodiac_virgo">Дева</string>
+    <string name="zodiac_libra">Весы</string>
+    <string name="zodiac_scorpio">Скорпион</string>
+    <string name="zodiac_sagittarius">Стрелец</string>
+    <string name="zodiac_capricorn">Козерог</string>
+    <string name="zodiac_aquarius">Водолей</string>
+    <string name="zodiac_pisces">Рыбы</string>
+    <string name="zodiac_unknown">Неизвестный знак</string>
 </resources>

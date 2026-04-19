@@ -7,6 +7,8 @@
     <string name="language_ru">Russian</string>
     <string name="add_vacancy">Add Vacancy</string>
     <string name="vacancy_details">Vacancy Details</string>
+    <string name="create_vacancy_title">Create Vacancy</string>
+    <string name="edit_vacancy_title">Edit Vacancy</string>
     <string name="title_hint">Job Title</string>
     <string name="desc_hint">Description</string>
     <string name="date_hint">Date</string>
@@ -15,4 +17,27 @@
     <string name="empty_list">No vacancies yet</string>
     <string name="language_hint">Language</string>
     <string name="back_button">Back</string>
+    <string name="theme_section_title">Theme</string>
+    <string name="theme_system">Use system theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="cd_open_settings">Open settings</string>
+    <string name="cd_add_vacancy">Add vacancy</string>
+    <string name="network_unavailable">No network connection.</string>
+    <string name="horoscope_title">HR horoscope for today</string>
+    <string name="horoscope_sign_format">Sign: %1$s\n%2$s</string>
+    <string name="horoscope_unavailable">Horoscope unavailable.\nCheck your connection or API key.</string>
+    <string name="zodiac_aries">Aries</string>
+    <string name="zodiac_taurus">Taurus</string>
+    <string name="zodiac_gemini">Gemini</string>
+    <string name="zodiac_cancer">Cancer</string>
+    <string name="zodiac_leo">Leo</string>
+    <string name="zodiac_virgo">Virgo</string>
+    <string name="zodiac_libra">Libra</string>
+    <string name="zodiac_scorpio">Scorpio</string>
+    <string name="zodiac_sagittarius">Sagittarius</string>
+    <string name="zodiac_capricorn">Capricorn</string>
+    <string name="zodiac_aquarius">Aquarius</string>
+    <string name="zodiac_pisces">Pisces</string>
+    <string name="zodiac_unknown">Unknown sign</string>
 </resources>
