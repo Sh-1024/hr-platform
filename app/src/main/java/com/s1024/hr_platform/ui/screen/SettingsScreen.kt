@@ -2,6 +2,7 @@ package com.s1024.hr_platform.ui.screen
 
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -13,16 +14,17 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.s1024.hr_platform.R
 import com.s1024.hr_platform.data.AppThemeMode
 import com.s1024.hr_platform.viewmodel.SettingsViewModel
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(viewModel: SettingsViewModel, onNavigateBack: () -> Unit) {
+fun SettingsScreen(
+    viewModel: SettingsViewModel,
+    onNavigateBack: () -> Unit,
+    onLogout: () -> Unit
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = {
-            TopAppBar(title = { Text(stringResource(id = R.string.settings_title)) })
-        }
+        topBar = { TopAppBar(title = { Text(stringResource(id = R.string.settings_title)) }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -31,41 +33,28 @@ fun SettingsScreen(viewModel: SettingsViewModel, onNavigateBack: () -> Unit) {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Text(
-                text = stringResource(id = R.string.theme_section_title),
-                style = MaterialTheme.typography.titleMedium
-            )
+            Text(text = stringResource(id = R.string.theme_section_title), style = MaterialTheme.typography.titleMedium)
 
-            ThemeModeRow(
-                title = stringResource(id = R.string.theme_system),
-                selected = uiState.themeMode == AppThemeMode.SYSTEM,
-                onClick = { viewModel.updateThemeMode(AppThemeMode.SYSTEM) }
-            )
-
-            ThemeModeRow(
-                title = stringResource(id = R.string.theme_light),
-                selected = uiState.themeMode == AppThemeMode.LIGHT,
-                onClick = { viewModel.updateThemeMode(AppThemeMode.LIGHT) }
-            )
-
-            ThemeModeRow(
-                title = stringResource(id = R.string.theme_dark),
-                selected = uiState.themeMode == AppThemeMode.DARK,
-                onClick = { viewModel.updateThemeMode(AppThemeMode.DARK) }
-            )
+            ThemeModeRow(titleRes = R.string.theme_system, selected = uiState.themeMode == AppThemeMode.SYSTEM) { viewModel.updateThemeMode(AppThemeMode.SYSTEM) }
+            ThemeModeRow(titleRes = R.string.theme_light, selected = uiState.themeMode == AppThemeMode.LIGHT) { viewModel.updateThemeMode(AppThemeMode.LIGHT) }
+            ThemeModeRow(titleRes = R.string.theme_dark, selected = uiState.themeMode == AppThemeMode.DARK) { viewModel.updateThemeMode(AppThemeMode.DARK) }
 
             Text(stringResource(id = R.string.language_hint), style = MaterialTheme.typography.titleMedium)
 
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                Button(onClick = { setLanguage("en") }) {
-                    Text(stringResource(id = R.string.language_en))
-                }
-                Button(onClick = { setLanguage("ru") }) {
-                    Text(stringResource(id = R.string.language_ru))
-                }
+                Button(onClick = { setLanguage("en") }) { Text(stringResource(id = R.string.language_en)) }
+                Button(onClick = { setLanguage("ru") }) { Text(stringResource(id = R.string.language_ru)) }
             }
 
             Spacer(modifier = Modifier.weight(1f))
+
+            Button(
+                onClick = onLogout,
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
+            ) {
+                Text(stringResource(id = R.string.logout_button))
+            }
 
             Button(onClick = onNavigateBack, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(id = R.string.back_button))
@@ -76,7 +65,7 @@ fun SettingsScreen(viewModel: SettingsViewModel, onNavigateBack: () -> Unit) {
 
 @Composable
 private fun ThemeModeRow(
-    title: String,
+    @StringRes titleRes: Int,
     selected: Boolean,
     onClick: () -> Unit
 ) {
@@ -97,7 +86,7 @@ private fun ThemeModeRow(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = title)
+            Text(text = stringResource(id = titleRes))
             RadioButton(selected = selected, onClick = null)
         }
     }

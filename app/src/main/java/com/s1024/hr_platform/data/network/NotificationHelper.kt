@@ -10,6 +10,7 @@ import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.s1024.hr_platform.R
 
 class NotificationHelper(private val context: Context) {
     private val CHANNEL_ID = "vacancy_channel_id"
@@ -20,8 +21,8 @@ class NotificationHelper(private val context: Context) {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Новые вакансии"
-            val descriptionText = "Уведомления о добавлении новых вакансий"
+            val name = context.getString(R.string.notification_channel_name)
+            val descriptionText = context.getString(R.string.notification_channel_description)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
@@ -41,8 +42,8 @@ class NotificationHelper(private val context: Context) {
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setContentTitle("Создана новая вакансия")
-            .setContentText("Автор $author добавил(а): $title")
+            .setContentTitle(context.getString(R.string.notification_vacancy_created_title))
+            .setContentText(context.getString(R.string.notification_vacancy_created_text, author, title))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true)
 

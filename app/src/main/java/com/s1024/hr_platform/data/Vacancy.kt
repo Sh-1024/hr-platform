@@ -21,7 +21,8 @@ data class Vacancy(
     val title: String,
     val description: String,
     val author: String,
-    val timestamp: Long
+    val timestamp: Long,
+    val location: String = ""
 )
 
 

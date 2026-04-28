@@ -40,4 +40,37 @@
     <string name="zodiac_aquarius">Aquarius</string>
     <string name="zodiac_pisces">Pisces</string>
     <string name="zodiac_unknown">Unknown sign</string>
+
+    <string name="search_by_title_label">Search by title</string>
+    <string name="filter_by_author_label">Filter by author</string>
+    <string name="sort_button">Sort</string>
+    <string name="sort_newest_first">Newest first</string>
+    <string name="sort_oldest_first">Oldest first</string>
+    <string name="sort_by_title">By title</string>
+    <string name="sort_by_author">By author</string>
+    <string name="author_format">Author: %1$s</string>
+    <string name="location_format">📍 %1$s</string>
+
+    <string name="author_hint">Author</string>
+    <string name="location_hint">Location</string>
+    <string name="gps_button">📍 GPS</string>
+    <string name="gps_location_format">Lat: %1$.5f, Lng: %2$.5f</string>
+    <string name="share_to_telegram">✈️ Share to Telegram</string>
+    <string name="location_not_specified">Not specified</string>
+    <string name="telegram_share_message">🔥 New vacancy!\n\n💼 Position: %1$s\n🏢 Author: %2$s\n📍 Location: %3$s\n\n📝 Description: %4$s</string>
+    <string name="share_vacancy_chooser_title">Share vacancy</string>
+
+    <string name="auth_title">Sign in</string>
+    <string name="auth_username_label">Login</string>
+    <string name="auth_password_label">Password</string>
+    <string name="auth_error_empty_fields">Please enter login and password</string>
+    <string name="auth_login_button">Sign in</string>
+
+    <string name="logout_button">Log out</string>
+
+    <string name="notification_channel_name">New vacancies</string>
+    <string name="notification_channel_description">Notifications when new vacancies are added</string>
+    <string name="notification_vacancy_created_title">New vacancy created</string>
+    <string name="notification_vacancy_created_text">Author %1$s added: %2$s</string>
+    <string name="auth_register_button">Register</string>
 </resources>

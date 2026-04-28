@@ -40,4 +40,37 @@
     <string name="zodiac_aquarius">Водолей</string>
     <string name="zodiac_pisces">Рыбы</string>
     <string name="zodiac_unknown">Неизвестный знак</string>
+
+    <string name="search_by_title_label">Поиск по названию</string>
+    <string name="filter_by_author_label">Фильтр по автору</string>
+    <string name="sort_button">Сортировка</string>
+    <string name="sort_newest_first">Сначала новые</string>
+    <string name="sort_oldest_first">Сначала старые</string>
+    <string name="sort_by_title">По названию</string>
+    <string name="sort_by_author">По автору</string>
+    <string name="author_format">Автор: %1$s</string>
+    <string name="location_format">📍 %1$s</string>
+
+    <string name="author_hint">Автор</string>
+    <string name="location_hint">Локация</string>
+    <string name="gps_button">📍 GPS</string>
+    <string name="gps_location_format">Широта: %1$.5f, Долгота: %2$.5f</string>
+    <string name="share_to_telegram">✈️ Поделиться в Telegram</string>
+    <string name="location_not_specified">Не указана</string>
+    <string name="telegram_share_message">🔥 Новая вакансия!\n\n💼 Позиция: %1$s\n🏢 Автор: %2$s\n📍 Локация: %3$s\n\n📝 Описание: %4$s</string>
+    <string name="share_vacancy_chooser_title">Поделиться вакансией</string>
+
+    <string name="auth_title">Авторизация</string>
+    <string name="auth_username_label">Логин</string>
+    <string name="auth_password_label">Пароль</string>
+    <string name="auth_error_empty_fields">Пожалуйста, введите логин и пароль</string>
+    <string name="auth_login_button">Войти</string>
+
+    <string name="logout_button">Выйти из аккаунта</string>
+
+    <string name="notification_channel_name">Новые вакансии</string>
+    <string name="notification_channel_description">Уведомления о добавлении новых вакансий</string>
+    <string name="notification_vacancy_created_title">Создана новая вакансия</string>
+    <string name="notification_vacancy_created_text">Автор %1$s добавил(а): %2$s</string>
+    <string name="auth_register_button">Регистрация</string>
 </resources>
